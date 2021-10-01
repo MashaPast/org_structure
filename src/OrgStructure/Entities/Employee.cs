@@ -27,5 +27,11 @@
 		public string Manager { get; set; }
 
 		public string Clan { get; set; }
+
+		public string Logo { get; set; }
+
+		public decimal? Longitude { get; set; }
+
+		public decimal? Latitude { get; set; }
 	}
 }
