@@ -1,21 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using OrgStructure.Abstractions;
-using OrgStructure.Contracts.Common;
-using OrgStructure.Contracts.GetEmployeeById;
-using OrgStructure.Contracts.GetEmployees;
 using Ardalis.GuardClauses;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using OrgStructure.Abstractions;
+using OrgStructure.Contracts.Common;
 
 namespace OrgStructure.Controllers
 {
 
 	[ApiController]
 	[Route("api/[controller]")]
-	public sealed class EmployeeController : ControllerBase
+	public sealed class EmployeesController : ControllerBase
 	{
-		public EmployeeController(
+		public EmployeesController(
 			IEmployeeRepository employeeRepository,
 			IMapper mapper)
 		{
@@ -27,26 +25,21 @@ namespace OrgStructure.Controllers
 
 		private IMapper Mapper { get; }
 
-
 		[HttpGet("{employeeId}")]
 		[Produces("application/json")]
-		public async Task<GetEmployeeByIdQueryResult> GetGetEmployeeByIdAsync(
+		public async Task<EmployeeDto> GetGetEmployeeByIdAsync(
 			[FromRoute] string employeeId)
 		{
 			var employee = await EmployeeRepository.GetEmployeeByIdAsync(employeeId);
-			var employeeDto = Mapper.Map<EmployeeDto>(employee);
-
-			return new GetEmployeeByIdQueryResult(employeeDto);
+			return Mapper.Map<EmployeeDto>(employee);
 		}
 
 		[HttpGet]
 		[Produces("application/json")]
-		public async Task<GetEmployeesQueryResult> GetGetEmployeesAsync()
+		public async Task<IEnumerable<EmployeeDto>> GetGetEmployeesAsync()
 		{
 			var employees = await EmployeeRepository.GetEmployeesAsync();
-			var employeesDto = Mapper.Map<IEnumerable<EmployeeDto>>(employees);
-
-			return new GetEmployeesQueryResult(employeesDto);
+			return Mapper.Map<IEnumerable<EmployeeDto>>(employees);
 		}
 	}
 }
