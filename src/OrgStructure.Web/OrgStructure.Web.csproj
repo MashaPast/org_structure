@@ -18,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="credits.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="employees.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

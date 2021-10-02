@@ -4,9 +4,9 @@ using AutoMapper;
 
 namespace OrgStructure.Web.AutoMapperProperties
 {
-	public sealed class EmployeeControllerProfile : Profile
+	public sealed class EmployeesControllerProfile : Profile
 	{
-		public EmployeeControllerProfile()
+		public EmployeesControllerProfile()
 		{
 			CreateMap<Employee, EmployeeDto>();
 		}

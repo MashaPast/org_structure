@@ -8,7 +8,6 @@ using OrgStructure.Contracts.Common;
 
 namespace OrgStructure.Controllers
 {
-
 	[ApiController]
 	[Route("api/[controller]")]
 	public sealed class EmployeesController : ControllerBase

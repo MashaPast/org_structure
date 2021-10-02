@@ -24,12 +24,18 @@ namespace OrgStructure.Web
 		{
 			services.AddSingleton(
 				new MapperConfiguration(
-					mc => mc.AddProfile(new EmployeeControllerProfile()))
+					mc =>
+					{
+						mc.AddProfile(new EmployeesControllerProfile());
+						mc.AddProfile(new CreditsControllerProfile());
+					})
 				.CreateMapper());
 
+			services.AddScoped<ICreditsRepository, JsonCreditsRepository>();
 			services.AddScoped<IEmployeeRepository, JsonEmployeeRepository>();
 
 			services
+				.AddCors()
 				.AddControllers()
 				.AddJsonOptions(options =>
 				{

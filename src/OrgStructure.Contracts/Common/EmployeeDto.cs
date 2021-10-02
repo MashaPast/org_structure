@@ -1,4 +1,6 @@
-﻿namespace OrgStructure.Contracts.Common
+﻿using System.Collections.Generic;
+
+namespace OrgStructure.Contracts.Common
 {
 	public sealed class EmployeeDto
 	{
@@ -32,5 +34,7 @@
 		public decimal? Longitude { get; set; }
 
 		public decimal? Latitude { get; set; }
+
+		public string Tag { get; set; }
 	}
 }

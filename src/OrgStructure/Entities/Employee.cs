@@ -1,4 +1,6 @@
-﻿namespace OrgStructure.Entities
+﻿using System.Collections.Generic;
+
+namespace OrgStructure.Entities
 {
 	public sealed class Employee
 	{
@@ -33,5 +35,7 @@
 		public decimal? Longitude { get; set; }
 
 		public decimal? Latitude { get; set; }
+
+		public string Tag { get; set; }
 	}
 }
