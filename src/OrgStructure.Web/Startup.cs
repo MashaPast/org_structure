@@ -52,6 +52,7 @@ namespace OrgStructure.Web
 				app.UseDeveloperExceptionPage();
 			}
 
+			app.UseCors(builder => builder.AllowAnyHeader().AllowAnyOrigin());
 			app.UseRouting();
 			app.UseAuthorization();
 			app.UseEndpoints(endpoints => endpoints.MapControllers());
